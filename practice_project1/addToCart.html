@@ -1,0 +1,922 @@
+<html lang="en">
+  <head>
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parag's Store</title>
+
+    <!-- Bootstrap css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- body font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nova+Square&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style
+      type="text/css"
+    >
+    a{
+    color : inherit;
+    text-decoration : none;
+}
+      #navbar-container {
+        background-color: #00bfff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5rem;
+        z-index: 99;
+      }
+
+      #navbar-container > #icon {
+        color: white;
+        font-size: 2.5rem;
+        padding: 0.4rem 1.8rem;
+      }
+
+      #navbar-container > #icon > #icon-in-div:hover {
+        cursor: pointer;
+      }
+
+      #navbar-container > #hand-bag {
+        position: absolute;
+        top: 1.3rem;
+        right: 2.6rem;
+        color: white;
+        font-size: 2rem;
+      }
+
+      #navbar-container > #hand-bag:hover {
+        cursor: pointer;
+        color: rgb(255, 100, 100);
+      }
+
+      #navbar-container > #number-of-products {
+        /* navbarda başlangıç değeri 0 olan değişkeni tutuyor. */
+
+        position: absolute;
+        top: 3.2rem;
+        right: 1.6rem;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 320px) {
+        #navbar-container > #number-of-products {
+          right: 1.4rem;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+    a{
+    color : inherit;
+    text-decoration : none;
+}
+      #loading-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1rem;
+        height: 100vh;
+      }
+
+      /* uiverse */
+      #loading-container > .loader {
+        width: 4em;
+        height: 4em;
+        border: 0.3em solid rgb(84, 84, 84);
+        border-left-color: #00bfff;
+        border-radius: 100%;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      #hero-container {
+        margin-top: 5rem;
+      }
+
+      #hero-container > img {
+        width: 60%;
+        margin-left: 20%;
+        padding: 1.5rem 0;
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      #flex-container {
+        width: 90%;
+        margin-left: 5%;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        margin-bottom: 2rem;
+      }
+
+      #flex-item {
+        width: 22%;
+
+        text-align: center;
+        box-shadow: 0 0 3px 0 #252b48;
+        border-radius: 10px;
+        padding: 1.5rem;
+
+        position: relative;
+      }
+
+      #product-head > img {
+        width: 11rem;
+        height: 7rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 0 #00bfff;
+        margin-bottom: 1.5rem;
+      }
+
+      #product-head > img:hover {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+
+      #product-head > h2 {
+        font-size: 1.1rem;
+      }
+
+      #product-info {
+        margin-top: 3.5rem;
+      }
+
+      #product-info > h2 {
+        position: absolute;
+        left: 30px;
+        bottom: 1px;
+        font-size: 1.8rem;
+      }
+
+      #product-info > h2 > #dolar-span {
+        color: rgb(255, 0, 0);
+        font-size: 1.8rem;
+      }
+
+      /* yeşil sepet */
+      #product-info > #shopping-cart {
+        position: absolute;
+        right: 30px;
+        bottom: 9px;
+        font-size: 2.2rem;
+        color: #005b41;
+      }
+
+      #product-info > #shopping-cart:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+
+      @media (max-width: 1250px) {
+        #flex-item {
+          width: 30%;
+        }
+      }
+
+      @media (max-width: 992px) {
+        #flex-item {
+          width: 40%;
+        }
+      }
+
+      @media (max-width: 650px) {
+        #flex-item {
+          width: 80%;
+        }
+      }
+
+      @media (max-width: 450px) {
+        #flex-item {
+          width: 90%;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      #details-heading {
+        margin-top: 6rem;
+      }
+
+      #single-product-container {
+        width: 90%;
+        margin-left: 5%;
+
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      #single-product-container > .flex-item > img {
+        border-radius: 10px;
+        box-shadow: 0 0 1px 3px #00bfff;
+        width: 30rem;
+        height: 30rem;
+        padding: 1rem;
+        object-fit: contain;
+      }
+
+      #single-product-container > #details {
+        padding: 1rem;
+        position: relative;
+      }
+
+      #single-product-container > #details > #brand {
+        font-size: 2rem;
+        color: #00bfff;
+      }
+
+      #single-product-container > #details > #title {
+        font-size: 1.4rem;
+      }
+
+      #single-product-container > #details > #description {
+        font-size: 1.1rem;
+        padding: 2rem 0;
+      }
+
+      #single-product-container > #details > span {
+        font-size: 0.9rem;
+        display: block;
+        margin-bottom: 1rem;
+      }
+
+      #price-container {
+        width: 60%;
+        margin-left: 20%;
+        text-align: center;
+
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+
+      #price-container > #price {
+        font-size: 2.5rem;
+      }
+
+      #price-container > #price > span {
+        color: #00bfff;
+        margin-right: 3px;
+      }
+
+      button {
+        color: white;
+        background-color: #00bfff;
+        border-radius: 5px;
+        padding: 8px;
+        border: none;
+        outline: none;
+      }
+
+      button:hover {
+        cursor: pointer;
+      }
+
+      @media (max-width: 992px) {
+        #single-product-container {
+          width: 96%;
+          margin-left: 2%;
+          padding: 4rem 0;
+        }
+
+        #single-product-container > .flex-item > img {
+          width: 25rem;
+          height: 25rem;
+        }
+
+        #single-product-container > #details {
+          padding: 0.3rem;
+        }
+      }
+
+      @media (max-width: 860px) {
+        #single-product-container {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          width: 90%;
+          margin-left: 5%;
+          padding: 1rem;
+        }
+
+        #single-product-container > .flex-item > img {
+          width: 20rem;
+          height: 20rem;
+        }
+
+        #price-container {
+          position: static;
+          padding: 1rem 0;
+        }
+      }
+
+      @media (max-width: 400px) {
+        #single-product-container > .flex-item > img {
+          width: 16rem;
+          height: 16rem;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      #zero-product-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 70vh;
+
+        text-align: center;
+        padding: 0 2rem;
+      }
+
+      #zero-product-container > h4 {
+        font-size: 1.4rem;
+        padding-bottom: 0.5rem;
+      }
+
+      #zero-product-container > #sad-icon {
+        font-size: 2rem;
+        color: #00bfff;
+      }
+
+      @media (max-width: 420px) {
+        #zero-product-container > h4 {
+          font-size: 1.2rem;
+        }
+
+        #zero-product-container > #sad-icon {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      #shopping-cart-heading {
+        margin-top: 6rem;
+      }
+
+      #single-cart-container {
+        display: flex;
+
+        /* to center the div */
+        width: 60%;
+        margin-left: 20%;
+
+        box-shadow: 0 0 2px 0 #252b48;
+        border-radius: 10px;
+        margin-bottom: 0.7rem;
+        padding: 0.8rem;
+
+        position: relative;
+      }
+
+      #single-cart-container > img {
+        width: 9rem;
+        height: 6rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 0 #00bfff;
+        margin-bottom: 3rem;
+      }
+
+      #single-cart-container > img:hover {
+        cursor: pointer;
+      }
+
+      #single-cart-container > #details {
+        margin: 2.5rem;
+        font-size: 1rem;
+      }
+
+      #single-cart-container > #details > #brand {
+        margin-right: 1.3rem;
+      }
+
+      #single-cart-container > #edit {
+        position: absolute;
+        left: 1.2rem;
+        bottom: 1.3rem;
+      }
+
+      #single-cart-container > #edit > * {
+        border: 1px solid #dcd9d9;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        height: 1.6rem;
+        width: 2.5rem;
+        padding: 0.7rem;
+
+        color: #000000;
+        font-weight: bold;
+      }
+
+      #single-cart-container > #edit > #minus,
+      #plus {
+        background-color: #faf9f9;
+      }
+
+      #single-cart-container > #edit > #minus,
+      #plus:hover {
+        cursor: pointer;
+      }
+
+      #single-cart-container > #edit > #quantity {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      #single-cart-container > #price {
+        position: absolute;
+        bottom: 1rem;
+        right: 4rem;
+        font-size: 2.1rem;
+      }
+
+      #single-cart-container > #price > #dolar-span {
+        color: #ff0000;
+      }
+
+      #single-cart-container > #price > #trash-icon {
+        color: #757575;
+
+        margin-left: 0.8rem;
+        font-size: 1.9rem;
+
+        position: absolute;
+        bottom: 0.4rem;
+      }
+
+      #single-cart-container > #price > #trash-icon:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+
+      #total-price-div {
+        width: 90%;
+        margin-left: 5%;
+
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      #total-price-div > span {
+        font-size: 2.1rem;
+      }
+
+      #total-price-div > #left {
+        margin-right: 0.7rem;
+      }
+
+      #total-price-div > #dolar {
+        color: #ff0000;
+      }
+
+      @media (max-width: 1270px) {
+        #single-cart-container {
+          width: 70%;
+          margin-left: 15%;
+        }
+
+        #single-cart-container > #details {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        #single-cart-container {
+          width: 80%;
+          margin-left: 10%;
+        }
+      }
+
+      @media (max-width: 780px) {
+        #single-cart-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #single-cart-container > img {
+          width: 10rem;
+          height: 6.5rem;
+          margin-bottom: 0;
+        }
+
+        #details > span {
+          display: block;
+          text-align: center;
+          width: 100%;
+          font-size: 1.2rem;
+        }
+
+        #details > #title {
+          margin-bottom: 2rem;
+        }
+
+        #single-cart-container > #edit > * {
+          height: 2.5rem;
+        }
+      }
+
+      @media (max-width: 520px) {
+        #single-cart-container > #price {
+          font-size: 1.5rem;
+        }
+
+        #single-cart-container > #price > #trash-icon {
+          font-size: 1.4rem;
+          bottom: 0.3rem;
+        }
+
+        #details > span {
+          margin-bottom: 1rem;
+          font-size: 1rem;
+        }
+
+        #single-cart-container > #edit {
+          bottom: 1.2rem;
+        }
+
+        #single-cart-container > #edit > * {
+          height: 1.8rem;
+        }
+
+        #total-price-div > span {
+          font-size: 1.6rem;
+        }
+
+        #total-price-div > #left {
+          margin-right: 0.1rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        #single-cart-container > #price {
+          bottom: 0.2rem;
+        }
+
+        #single-cart-container > #edit {
+          width: 100%;
+          left: 0;
+          bottom: 1.9rem;
+          margin-bottom: 1.4rem;
+
+          text-align: center;
+        }
+      }
+    </style>
+    <style
+      type="text/css"
+    >
+      body {
+        background-color: white;
+        margin: 0;
+        padding: 0;
+        font-family: "Nova Square", sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        letter-spacing: 2.5px;
+        margin: 20px 0;
+      }
+    </style>
+    <style id="_goober">
+      @keyframes go2264125279 {
+        from {
+          transform: scale(0) rotate(45deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(45deg);
+          opacity: 1;
+        }
+      }
+      @keyframes go3020080000 {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes go463499852 {
+        from {
+          transform: scale(0) rotate(90deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(90deg);
+          opacity: 1;
+        }
+      }
+      @keyframes go1268368563 {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes go1310225428 {
+        from {
+          transform: scale(0) rotate(45deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotate(45deg);
+          opacity: 1;
+        }
+      }
+      @keyframes go651618207 {
+        0% {
+          height: 0;
+          width: 0;
+          opacity: 0;
+        }
+        40% {
+          height: 0;
+          width: 6px;
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+          height: 10px;
+        }
+      }
+      @keyframes go901347462 {
+        from {
+          transform: scale(0.6);
+          opacity: 0.4;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .go4109123758 {
+        z-index: 9999;
+      }
+      .go4109123758 > * {
+        pointer-events: auto;
+      }
+      .go2072408551 {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        color: #363636;
+        line-height: 1.3;
+        will-change: transform;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1), 0 3px 3px rgba(0, 0, 0, 0.05);
+        max-width: 350px;
+        pointer-events: auto;
+        padding: 8px 10px;
+        border-radius: 8px;
+      }
+      .go685806154 {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 20px;
+        min-height: 20px;
+      }
+      .go1858758034 {
+        width: 12px;
+        height: 12px;
+        box-sizing: border-box;
+        border: 2px solid;
+        border-radius: 100%;
+        border-color: #e0e0e0;
+        border-right-color: #616161;
+        animation: go1268368563 1s linear infinite;
+      }
+      .go1579819456 {
+        position: absolute;
+      }
+      .go2344853693 {
+        width: 20px;
+        opacity: 0;
+        height: 20px;
+        border-radius: 10px;
+        background: #61d345;
+        position: relative;
+        transform: rotate(45deg);
+        animation: go1310225428 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+          forwards;
+        animation-delay: 100ms;
+      }
+      .go2344853693:after {
+        content: "";
+        box-sizing: border-box;
+        animation: go651618207 0.2s ease-out forwards;
+        opacity: 0;
+        animation-delay: 200ms;
+        position: absolute;
+        border-right: 2px solid;
+        border-bottom: 2px solid;
+        border-color: #fff;
+        bottom: 6px;
+        left: 6px;
+        height: 10px;
+        width: 6px;
+      }
+      .go3958317564 {
+        display: flex;
+        justify-content: center;
+        margin: 4px 10px;
+        color: inherit;
+        flex: 1 1 auto;
+        white-space: pre-line;
+      }
+      @keyframes go3223188581 {
+        0% {
+          transform: translate3d(0, -200%, 0) scale(0.6);
+          opacity: 0.5;
+        }
+        100% {
+          transform: translate3d(0, 0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes go502128938 {
+        0% {
+          transform: translate3d(0, 0, -1px) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translate3d(0, -150%, -1px) scale(0.6);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div
+        style="
+          position: fixed;
+          z-index: 9999;
+          inset: 16px;
+          pointer-events: none;
+        "
+      ></div>
+      <div id="navbar-container">
+        <div id="icon">
+            <a href="./index.html">
+          <svg
+            stroke="currentColor"
+            fill="none"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            id="icon-in-div"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M3 21l18 0"></path>
+            <path
+              d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"
+            ></path>
+            <path d="M5 21l0 -10.15"></path>
+            <path d="M19 21l0 -10.15"></path>
+            <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+          </svg>
+        </a>
+        </div>
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 16 16"
+          id="hand-bag"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+        <a href="#">
+          <path
+            d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z"
+          ></path>
+        </a>
+        </svg>
+        <div id="number-of-products">2</div>
+      </div>
+      <h1 id="shopping-cart-heading">SHOPPING CART</h1>
+      <div id="single-cart-container">
+        <img
+          src="https://i.dummyjson.com/data/products/2/thumbnail.jpg"
+          alt="product image"
+        />
+        <div id="details">
+          <span id="brand">Apple</span><span id="title">iPhone X</span>
+        </div>
+        <div id="edit">
+          <div id="minus" style="color: rgb(220, 217, 217); cursor: default">
+            -
+          </div>
+          <div id="quantity">1</div>
+          <div id="plus">+</div>
+        </div>
+        <div id="price">
+          <span id="dolar-span">₹</span><span id="price-span">74617</span
+          ><span id="trash-icon"
+            ><svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
+              ></path></svg
+          ></span>
+        </div>
+      </div>
+      <div id="single-cart-container">
+        <img
+          src="https://i.dummyjson.com/data/products/1/thumbnail.jpg"
+          alt="product image"
+        />
+        <div id="details">
+          <span id="brand">Apple</span><span id="title">iPhone 9</span>
+        </div>
+        <div id="edit">
+          <div id="minus" style="color: rgb(220, 217, 217); cursor: default">
+            -
+          </div>
+          <div id="quantity">1</div>
+          <div id="plus">+</div>
+        </div>
+        <div id="price">
+          <span id="dolar-span">₹</span><span id="price-span">45567</span
+          ><span id="trash-icon"
+            ><svg
+              stroke="currentColor"
+              fill="currentColor"
+              stroke-width="0"
+              viewBox="0 0 448 512"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
+              ></path></svg
+          ></span>
+        </div>
+      </div>
+      <div id="total-price-div">
+        <span id="left">Total Price: </span><span id="dolar">₹</span
+        ><span id="right">120184</span>
+      </div>
+    </div>
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>

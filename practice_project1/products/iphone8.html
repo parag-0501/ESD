@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parag's Store</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nova+Square&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="../styles/singleProduct.css" />
+
+    <!-- Add any other meta tags or external scripts you may have -->
+  </head>
+
+  <body>
+    <div id="root">
+      <div id="navbar-container">
+        <div id="icon">
+          <a href="../index.html">
+            <!-- Your icon SVG or content goes here -->
+            <svg
+              stroke="currentColor"
+              fill="none"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              id="icon-in-div"
+              height="1em"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M3 21l18 0"></path>
+              <path
+                d="M3 7v1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1m0 1a3 3 0 0 0 6 0v-1h-18l2 -4h14l2 4"
+              ></path>
+              <path d="M5 21l0 -10.15"></path>
+              <path d="M19 21l0 -10.15"></path>
+              <path d="M9 21v-4a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v4"></path>
+            </svg>
+          </a>
+        </div>
+        <svg
+          stroke="currentColor"
+          fill="currentColor"
+          stroke-width="0"
+          viewBox="0 0 16 16"
+          id="hand-bag"
+          height="1em"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <!-- Your hand bag SVG or content goes here -->
+          <a href="../addToCart.html">
+            <path
+              d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z"
+            ></path>
+          </a>
+        </svg>
+        <div id="number-of-products">0</div>
+      </div>
+
+      <h1 id="details-heading">DETAILS</h1>
+
+      <div id="single-product-container">
+        <div class="flex-item">
+          <img
+            src="https://images.hindustantimes.com/tech/htmobile4/P29780/images/Design/109469-v1-apple-iphone-8-mobile-phone-large-5.jpg"
+            alt="product image"
+          />
+        </div>
+        <div id="details" class="flex-item">
+          <h2 id="brand">Apple</h2>
+          <h2 id="title">iPhone 8</h2>
+          <h2 id="description">
+            "An apple mobile which is nothing like apple"
+          </h2>
+          <span>category: smartphones</span>
+          <div id="price-container">
+            <h2 id="price"><span>₹</span>45567</h2>
+          </div>
+          <button>Add to cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Your custom scripts -->
+    <script type="module" src="./src/main.jsx"></script>
+  </body>
+</html>
